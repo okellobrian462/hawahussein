@@ -1,0 +1,60 @@
+backend:
+  name: github
+  repo: your-github-username/your-repo-name  # Replace with your repo
+  branch: main                               # or master if your repo uses master
+  auth_type: implicit                         # OAuth implicit flow for local testing
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "homepage"
+    label: "Homepage"
+    file: "public/index.html"
+    fields:
+      - { name: "title", label: "Page Title", widget: "string" }
+      - { name: "hero_image", label: "Hero Image", widget: "image" }
+      - { name: "intro_text", label: "Intro Text", widget: "markdown" }
+
+  - name: "ourstory"
+    label: "Our Story"
+    file: "public/en/global/ourstory/index.md"
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "body", label: "Content", widget: "markdown" }
+
+  - name: "people"
+    label: "People"
+    folder: "public/en/global/people"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: "name", label: "Name", widget: "string" }
+      - { name: "role", label: "Role", widget: "string" }
+      - { name: "photo", label: "Photo", widget: "image" }
+      - { name: "bio", label: "Bio", widget: "markdown" }
+
+  - name: "insights"
+    label: "Insights"
+    folder: "public/en/global/insights"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "date", label: "Date", widget: "datetime" }
+      - { name: "image", label: "Featured Image", widget: "image" }
+      - { name: "body", label: "Body", widget: "markdown" }
+
+  - name: "services"
+    label: "Services"
+    file: "public/services.html"
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "body", label: "Body", widget: "markdown" }
+
+  - name: "contact"
+    label: "Contact Page"
+    file: "public/contact-us.html"
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "body", label: "Body", widget: "markdown" }
